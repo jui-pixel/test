@@ -1,5 +1,3 @@
-import sys
-sys.path.append('/home/jing/.local/lib/python3.10/site-packages')
 import pyivp
 
 
