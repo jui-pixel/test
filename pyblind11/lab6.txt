@@ -19,3 +19,5 @@ make
 cd /home/arg/pyivp
 make clean
 make
+source Docker/colab_jupyter.sh
+http://127.0.0.1:8888/tree key:assistive
