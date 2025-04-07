@@ -1,0 +1,23 @@
+source docker_run.sh
+
+make -C src_unit_tests 
+make -C src/pybind11
+make -C src
+make
+rm -rf /home/arg/pyivp/src/build
+rm -rf /home/arg/pyivp/src_unit_tests/build
+cd /home/arg/pyivp/src
+mkdir build
+cd build
+cmake ..
+make
+cd /home/arg/pyivp/src_unit_tests
+mkdir build
+cd build
+cmake ..
+make
+cd /home/arg/pyivp
+make clean
+make
+source Docker/colab_jupyter.sh
+http://127.0.0.1:8888/tree key:assistive
