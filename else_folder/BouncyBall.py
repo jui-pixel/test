@@ -2,7 +2,7 @@ import pygame
 import random
 FPS = 60
 screen_width, screen_height = 800, 600
-
+total_balls = 20
 # 定義顏色
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
@@ -41,9 +41,13 @@ def main():
     
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("BouncyBall")
-    
-    ball1 = Ball(screen, WHITE, 20, [screen_width // 2, screen_height // 2], [random.randrange(-3,3),random.randrange(-3,30)], 10)
-    ball2 = Ball(screen, RED, 20, [screen_width // 2 + screen_width // 4, screen_height // 4 + screen_height // 4], [random.randrange(-30,30), random.randrange(-3,3)], 5)
+
+    list_of_balls = []
+    for balls in range(total_balls):
+        ball = Ball(screen, WHITE, 20, [random.randint(0, screen_width), random.randint(0, screen_height)], [random.randrange(-30,30), random.randrange(-30,30)], 0)
+        list_of_balls.append(ball)
+    # ball1 = Ball(screen, WHITE, 20, [screen_width // 2, screen_height // 2], [random.randrange(-30,30),random.randrange(-30,30)], 0)
+    # ball2 = Ball(screen, RED, 20, [screen_width // 2 + screen_width // 4, screen_height // 4 + screen_height // 4], [random.randrange(-30,30), random.randrange(-30,30)], 5)
 
     clock = pygame.time.Clock()
     running = True
@@ -57,10 +61,13 @@ def main():
                 
         screen.fill(BLUE)
         # 更新球的位置及反彈邏輯
-        ball1.update_ball()
-        ball2.update_ball()
-        ball1.draw_ball()
-        ball2.draw_ball()
+        # ball1.update_ball()
+        # ball2.update_ball()
+        # ball1.draw_ball()
+        # ball2.draw_ball()
+        for ball in list_of_balls:
+            ball.update_ball()
+            ball.draw_ball()
 
         pygame.display.update()
         clock.tick(FPS)
